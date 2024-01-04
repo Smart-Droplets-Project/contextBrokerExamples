@@ -1,0 +1,489 @@
+{
+	"info": {
+		"_postman_id": "77d8e548-09c9-4b80-ab72-ca3b7188ef4f",
+		"name": "1_Functionality Overview",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11446135"
+	},
+	"item": [
+		{
+			"name": "1.1 Register Soy Farm",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"urn:ngsi-ld:AgriFarm:SoyFarm:1\",\n    \"type\": \"AgriFarm\",\n    \"name\": {\n        \"type\": \"Property\",\n        \"value\": \"Soy farm 1\"\n    },\n    \"description\": {\n        \"type\": \"Property\",\n        \"value\": \"A farm producing soy\"\n    },\n    \"hasAgriParcel\": {\n        \"type\": \"Relationship\",\n        \"object\": [\n            \"urn:ngsi-ld:AgriParcel:SoyParcel:1\",\n            \"urn:ngsi-ld:AgriParcel:SoyParcel:2\"\n        ]\n    },\n    \"address\": {\n        \"type\": \"Property\",\n        \"value\": {\n            \"type\": \"PostalAddress\",\n            \"addressLocality\": \"Valdepe\\u00f1as\",\n            \"addressCountry\": \"ES\",\n            \"streetAddress\": \"Camino de Membrilla 17\"\n        }\n    },\n    \"contactPoint\": {\n        \"type\": \"Property\",\n        \"value\": {\n            \"type\": \"ContactPoint\",\n            \"email\": \"soyfarm@email.com\",\n            \"telephone\": \"12345\"\n        }\n    },\n    \"createdAt\": \"2017-01-01T01:20:00Z\",\n    \"hasBuilding\": {\n        \"type\": \"Relationship\",\n        \"object\": [\n            \"urn:ngsi-ld:Building:a6ba44e0-4474-11e8-8ed1-ab9e0ea93827\",\n            \"urn:ngsi-ld:Building:d95b8874-4474-11e8-8d6b-dbe144258354\"\n        ]\n    },\n    \"landLocation\": {\n        \"type\": \"GeoProperty\",\n        \"value\": {\n            \"type\": \"Polygon\",\n            \"coordinates\": [\n                [\n                    [\n                        100,\n                        0\n                    ],\n                    [\n                        101,\n                        0\n                    ],\n                    [\n                        101,\n                        1\n                    ],\n                    [\n                        100,\n                        1\n                    ],\n                    [\n                        100,\n                        0\n                    ]\n                ]\n            ]\n        }\n    },\n    \"location\": {\n        \"type\": \"GeoProperty\",\n        \"value\": {\n            \"type\": \"Point\",\n            \"coordinates\": [\n                100,\n                0\n            ]\n        }\n    },\n    \"modifiedAt\": \"2017-05-04T12:30:00Z\",\n    \"ownedBy\": {\n        \"type\": \"Relationship\",\n        \"object\": \"urn:ngsi-ld:Person:fce9dcbc-4479-11e8-9de1-cb228de7a15c\"\n    },\n    \"relatedSource\": {\n        \"type\": \"Property\",\n        \"value\": [\n            {\n                \"application\": \"urn:ngsi-ld:AgriApp:72d9fb43-53f8-4ec8-a33c-fa931360259a\",\n                \"applicationEntityId\": \"app:farm1\"\n            }\n        ]\n    },\n    \"seeAlso\": {\n        \"type\": \"Property\",\n        \"value\": [\n            \"https://example.org/concept/farm\",\n            \"https://datamodel.org/example/farm\"\n        ]\n    },\n    \"@context\": [\n        \"https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld\",\n        \"https://raw.githubusercontent.com/smart-data-models/dataModel.Agrifood/master/context.jsonld\"\n    ]\n}"
+				},
+				"url": {
+					"raw": "localhost:1026/ngsi-ld/v1/entities",
+					"host": [
+						"localhost"
+					],
+					"port": "1026",
+					"path": [
+						"ngsi-ld",
+						"v1",
+						"entities"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.2 Register Soy Parcel #1",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"@context\": \"https://raw.githubusercontent.com/smart-data-models/dataModel.Agrifood/master/context.jsonld\",\n    \"id\": \"urn:ngsi-ld:AgriParcel:SoyParcel:1\",\n    \"type\": \"AgriParcel\",\n    \"area\": {\n        \"type\": \"Property\",\n        \"value\": 200\n    },\n    \"belongsTo\": {\n        \"type\": \"Relationship\",\n        \"object\": \"urn:ngsi-ld:AgriFarm:SoyFarm:1\"\n    },\n    \"category\": {\n        \"type\": \"Property\",\n        \"value\": \"arable\"\n    },\n    \"cropStatus\": {\n        \"type\": \"Property\",\n        \"value\": \"seeded\"\n    },\n    \"hasAgriCrop\": {\n        \"type\": \"Relationship\",\n        \"object\": \"urn:ngsi-ld:AgriCrop:crop-1-id\"\n    },\n    \"hasAgriParcelChildren\": {\n        \"type\": \"Relationship\",\n        \"object\": [\n            \"urn:ngsi-ld:AgriParcel:26ba4be0-4474-11e8-8ec1-ab9e0ea93835\",\n            \"urn:ngsi-ld:AgriParcel:2d5b8874-4474-11e8-8d6b-dbe14425b5e4\"\n        ]\n    },\n    \"hasAgriParcelParent\": {\n        \"type\": \"Relationship\",\n        \"object\": \"urn:ngsi-ld:AgriParcel:1ea0f120-4474-11e8-9919-672036642081\"\n    },\n    \"hasAgriSoil\": {\n        \"type\": \"Relationship\",\n        \"object\": \"urn:ngsi-ld:AgriSoil:429d1338-4474-11e8-b90a-d3e34ceb73df\"\n    },\n    \"hasAirQualityObserved\": {\n        \"type\": \"Relationship\",\n        \"object\": [\n            \"urn:ngsi-ld:AirQualityObserved:B3F76EA170D030BCD9E036DCC9BEA22B\"\n        ]\n    },\n    \"hasDevice\": {\n        \"type\": \"Relationship\",\n        \"object\": [\n            \"urn:ngsi-ld:Device:4a40aeba-4474-11e8-86bf-03d82e958ce6\",\n            \"urn:ngsi-ld:Device:63217d24-4474-11e8-9da2-c3dd3c36891b\",\n            \"urn:ngsi-ld:Device:68e091dc-4474-11e8-a398-df010c53b416\",\n            \"urn:ngsi-ld:6f44b54e-4474-11e8-8577-d7ff6a8ef551\"\n        ]\n    },\n    \"lastPlantedAt\": {\n        \"type\": \"Property\",\n        \"value\": {\n            \"@type\": \"DateTime\",\n            \"@value\": \"2016-08-22T10:18:16Z\"\n        }\n    },\n    \"ownedBy\": {\n        \"type\": \"Relationship\",\n        \"object\": \"urn:ngsi-ld:Person:fce9dcbc-4479-11e8-9de1-cb228de7a15c\"\n    },\n    \"relatedSource\": {\n        \"type\": \"Property\",\n        \"value\": {\n            \"application\": \"urn:ngsi-ld:AgriApp:72d9fb43-53f8-4ec8-a33c-fa931360259a\",\n            \"applicationEntityId\": \"app:parcel1\"\n        }\n    },\n    \"seeAlso\": {\n        \"type\": \"Property\",\n        \"value\": [\n            \"https://example.org/concept/agriparcel\",\n            \"https://datamodel.org/example/agriparcel\"\n        ]\n    },\n    \"description\": {\n        \"type\": \"Property\",\n        \"value\": \"Spring wheat\"\n    },\n    \"location\": {\n        \"type\": \"Property\",\n        \"value\": []\n    }\n}"
+				},
+				"url": {
+					"raw": "localhost:1026/ngsi-ld/v1/entities",
+					"host": [
+						"localhost"
+					],
+					"port": "1026",
+					"path": [
+						"ngsi-ld",
+						"v1",
+						"entities"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.3 Register Soy Parcel #2",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"@context\": \"https://raw.githubusercontent.com/smart-data-models/dataModel.Agrifood/master/context.jsonld\",\n    \"id\": \"urn:ngsi-ld:AgriParcel:SoyParcel:2\",\n    \"type\": \"AgriParcel\",\n    \"area\": {\n        \"type\": \"Property\",\n        \"value\": 200\n    },\n    \"belongsTo\": {\n        \"type\": \"Relationship\",\n        \"object\": \"urn:ngsi-ld:AgriFarm:SoyFarm:1\"\n    },\n    \"category\": {\n        \"type\": \"Property\",\n        \"value\": \"arable\"\n    },\n    \"cropStatus\": {\n        \"type\": \"Property\",\n        \"value\": \"seeded\"\n    },\n    \"hasAgriCrop\": {\n        \"type\": \"Relationship\",\n        \"object\": \"urn:ngsi-ld:AgriCrop:crop-1-id\"\n    },\n    \"hasAgriParcelChildren\": {\n        \"type\": \"Relationship\",\n        \"object\": [\n            \"urn:ngsi-ld:AgriParcel:26ba4be0-4474-11e8-8ec1-ab9e0ea93835\",\n            \"urn:ngsi-ld:AgriParcel:2d5b8874-4474-11e8-8d6b-dbe14425b5e4\"\n        ]\n    },\n    \"hasAgriParcelParent\": {\n        \"type\": \"Relationship\",\n        \"object\": \"urn:ngsi-ld:AgriParcel:1ea0f120-4474-11e8-9919-672036642081\"\n    },\n    \"hasAgriSoil\": {\n        \"type\": \"Relationship\",\n        \"object\": \"urn:ngsi-ld:AgriSoil:429d1338-4474-11e8-b90a-d3e34ceb73df\"\n    },\n    \"hasAirQualityObserved\": {\n        \"type\": \"Relationship\",\n        \"object\": [\n            \"urn:ngsi-ld:AirQualityObserved:B3F76EA170D030BCD9E036DCC9BEA22B\"\n        ]\n    },\n    \"hasDevice\": {\n        \"type\": \"Relationship\",\n        \"object\": [\n            \"urn:ngsi-ld:Device:4a40aeba-4474-11e8-86bf-03d82e958ce6\",\n            \"urn:ngsi-ld:Device:63217d24-4474-11e8-9da2-c3dd3c36891b\",\n            \"urn:ngsi-ld:Device:68e091dc-4474-11e8-a398-df010c53b416\",\n            \"urn:ngsi-ld:6f44b54e-4474-11e8-8577-d7ff6a8ef551\"\n        ]\n    },\n    \"lastPlantedAt\": {\n        \"type\": \"Property\",\n        \"value\": {\n            \"@type\": \"DateTime\",\n            \"@value\": \"2016-08-22T10:18:16Z\"\n        }\n    },\n    \"ownedBy\": {\n        \"type\": \"Relationship\",\n        \"object\": \"urn:ngsi-ld:Person:fce9dcbc-4479-11e8-9de1-cb228de7a15c\"\n    },\n    \"relatedSource\": {\n        \"type\": \"Property\",\n        \"value\": {\n            \"application\": \"urn:ngsi-ld:AgriApp:72d9fb43-53f8-4ec8-a33c-fa931360259a\",\n            \"applicationEntityId\": \"app:parcel1\"\n        }\n    },\n    \"seeAlso\": {\n        \"type\": \"Property\",\n        \"value\": [\n            \"https://example.org/concept/agriparcel\",\n            \"https://datamodel.org/example/agriparcel\"\n        ]\n    },\n    \"description\": {\n        \"type\": \"Property\",\n        \"value\": \"Spring wheat\"\n    },\n    \"location\": {\n        \"type\": \"Property\",\n        \"value\": []\n    }\n}"
+				},
+				"url": {
+					"raw": "localhost:1026/ngsi-ld/v1/entities",
+					"host": [
+						"localhost"
+					],
+					"port": "1026",
+					"path": [
+						"ngsi-ld",
+						"v1",
+						"entities"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.4 Register Soy Farm Tractor",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": \"urn:ngsi-ld:Vehicle:vehicle:RetrofitterTractor:1\",\n  \"type\": \"Vehicle\",\n  \"vehicleType\": {\n    \"type\": \"Property\",\n    \"value\": \"Tractor\"\n  },\n  \"areaServed\": {\n    \"type\": \"Property\",\n    \"value\": \"Centro\"\n  },\n  \"bearing\": {\n    \"type\": \"Property\",\n    \"value\": 43\n  },\n  \"cargoWeight\": {\n    \"type\": \"Property\",\n    \"value\": 314\n  },\n  \"category\": {\n    \"type\": \"Property\",\n    \"value\": [\n      \"municipalServices\"\n    ]\n  },\n  \"currentTripCount\": {\n    \"type\": \"Property\",\n    \"value\": 1\n  },\n  \"deviceBatteryStatus\": {\n    \"type\": \"Property\",\n    \"value\": \"Connected\"\n  },\n  \"deviceSimNumber\": {\n    \"type\": \"Property\",\n    \"value\": \"9942142573\"\n  },\n  \"emergencyVehicleType\": {\n    \"type\": \"Property\",\n    \"value\": \"ambulance\"\n  },\n  \"fuelEfficiency\": {\n    \"type\": \"Property\",\n    \"value\": 13\n  },\n  \"fuelFilled\": {\n    \"type\": \"Property\",\n    \"value\": 6\n  },\n  \"fuelType\": {\n    \"type\": \"Property\",\n    \"value\": \"Petrol\"\n  },\n  \"ignitionStatus\": {\n    \"type\": \"Property\",\n    \"value\": true\n  },\n  \"license_plate\": {\n    \"type\": \"Property\",\n    \"value\": \"KA052134\"\n  },\n  \"location\": {\n    \"type\": \"GeoProperty\",\n    \"value\": {\n      \"type\": \"Point\",\n      \"coordinates\": [\n        -3.164485591715449,\n        40.62785133667262\n      ]\n    },\n    \"observedAt\": \"2018-09-27T12:00:00Z\"\n  },\n  \"municipalityInfo\": {\n    \"type\": \"Property\",\n    \"value\": {\n      \"district\": \"Bangalore Urban\",\n      \"ulbName\": \"BMC\",\n      \"cityId\": \"23\",\n      \"wardId\": \"23\",\n      \"stateName\": \"Karnataka\",\n      \"cityName\": \"Bangalore\",\n      \"zoneName\": \"South\",\n      \"wardName\": \"Bangalore Urban\",\n      \"zoneId\": \"2\",\n      \"wardNum\": 4\n    }\n  },\n  \"name\": {\n    \"type\": \"Property\",\n    \"value\": \"C Recogida 1\"\n  },\n  \"observationDateTime\": {\n    \"type\": \"Property\",\n    \"value\": {\n      \"@type\": \"DateTime\",\n      \"@value\": \"2021-03-11T15:51:02+05:30\"\n    }\n  },\n  \"refVehicleModel\": {\n    \"type\": \"Relationship\",\n    \"object\": \"urn:ngsi-ld:VehicleModel:vehiclemodel:econic\"\n  },\n  \"reportId\": {\n    \"type\": \"Property\",\n    \"value\": \"21645\"\n  },\n  \"serviceOnDuty\": {\n    \"type\": \"Property\",\n    \"value\": false\n  },\n  \"serviceProvided\": {\n    \"type\": \"Property\",\n    \"value\": [\n      \"garbageCollection\",\n      \"wasteContainerCleaning\"\n    ]\n  },\n  \"serviceStatus\": {\n    \"type\": \"Property\",\n    \"value\": \"onRoute\"\n  },\n  \"speed\": {\n    \"type\": \"Property\",\n    \"value\": 50,\n    \"observedAt\": \"2018-09-27T12:00:00Z\"\n  },\n  \"tripNetWeightCollected\": {\n    \"type\": \"Property\",\n    \"value\": 12\n  },\n  \"vehicleAltitude\": {\n    \"type\": \"Property\",\n    \"value\": 600\n  },\n  \"vehiclePlateIdentifier\": {\n    \"type\": \"Property\",\n    \"value\": \"3456ABC\"\n  },\n  \"vehicleRunningStatus\": {\n    \"type\": \"Property\",\n    \"value\": \"running\"\n  },\n  \"vehicleTrackerDevice\": {\n    \"type\": \"Property\",\n    \"value\": \"Installed\"\n  },\n  \"wardId\": {\n    \"type\": \"Property\",\n    \"value\": \"4\"\n  },\n  \"wardName\": {\n    \"type\": \"Property\",\n    \"value\": \"Kempegowda Ward\"\n  },\n  \"zoneName\": {\n    \"type\": \"Property\",\n    \"value\": \"South Zone\"\n  },\n  \"@context\": [\n    \"https://smart-data-models.github.io/dataModel.Transportation/context.jsonld\"\n  ]\n}"
+				},
+				"url": {
+					"raw": "localhost:1026/ngsi-ld/v1/entities",
+					"host": [
+						"localhost"
+					],
+					"port": "1026",
+					"path": [
+						"ngsi-ld",
+						"v1",
+						"entities"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.5 Register Wheat Farm",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"urn:ngsi-ld:AgriFarm:WheatFarm:1\",\n    \"type\": \"AgriFarm\",\n    \"name\": {\n        \"type\": \"Property\",\n        \"value\": \"Wheat farm 1\"\n    },\n    \"description\": {\n        \"type\": \"Property\",\n        \"value\": \"A farm producing wheat\"\n    },\n    \"hasAgriParcel\": {\n        \"type\": \"Relationship\",\n        \"object\": [\n            \"urn:ngsi-ld:AgriParcel:WheatParcel:1\"\n        ]\n    },\n    \"address\": {\n        \"type\": \"Property\",\n        \"value\": {\n            \"type\": \"PostalAddress\",\n            \"addressLocality\": \"Valdepe\\u00f1as\",\n            \"addressCountry\": \"ES\",\n            \"streetAddress\": \"Camino de Membrilla 17\"\n        }\n    },\n    \"contactPoint\": {\n        \"type\": \"Property\",\n        \"value\": {\n            \"type\": \"ContactPoint\",\n            \"email\": \"wheatfarm@email.com\",\n            \"telephone\": \"12345\"\n        }\n    },\n    \"createdAt\": \"2017-01-01T01:20:00Z\",\n    \"hasBuilding\": {\n        \"type\": \"Relationship\",\n        \"object\": [\n            \"urn:ngsi-ld:Building:a6ba44e0-4474-11e8-8ed1-ab9e0ea93827\",\n            \"urn:ngsi-ld:Building:d95b8874-4474-11e8-8d6b-dbe144258354\"\n        ]\n    },\n    \"landLocation\": {\n        \"type\": \"GeoProperty\",\n        \"value\": {\n            \"type\": \"Polygon\",\n            \"coordinates\": [\n                [\n                    [\n                        100,\n                        0\n                    ],\n                    [\n                        101,\n                        0\n                    ],\n                    [\n                        101,\n                        1\n                    ],\n                    [\n                        100,\n                        1\n                    ],\n                    [\n                        100,\n                        0\n                    ]\n                ]\n            ]\n        }\n    },\n    \"location\": {\n        \"type\": \"GeoProperty\",\n        \"value\": {\n            \"type\": \"Point\",\n            \"coordinates\": [\n                100,\n                0\n            ]\n        }\n    },\n    \"modifiedAt\": \"2017-05-04T12:30:00Z\",\n    \"ownedBy\": {\n        \"type\": \"Relationship\",\n        \"object\": \"urn:ngsi-ld:Person:fce9dcbc-4479-11e8-9de1-cb228de7a15c\"\n    },\n    \"relatedSource\": {\n        \"type\": \"Property\",\n        \"value\": [\n            {\n                \"application\": \"urn:ngsi-ld:AgriApp:72d9fb43-53f8-4ec8-a33c-fa931360259a\",\n                \"applicationEntityId\": \"app:farm1\"\n            }\n        ]\n    },\n    \"seeAlso\": {\n        \"type\": \"Property\",\n        \"value\": [\n            \"https://example.org/concept/farm\",\n            \"https://datamodel.org/example/farm\"\n        ]\n    },\n    \"@context\": [\n        \"https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld\",\n        \"https://raw.githubusercontent.com/smart-data-models/dataModel.Agrifood/master/context.jsonld\"\n    ]\n}"
+				},
+				"url": {
+					"raw": "localhost:1026/ngsi-ld/v1/entities",
+					"host": [
+						"localhost"
+					],
+					"port": "1026",
+					"path": [
+						"ngsi-ld",
+						"v1",
+						"entities"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.6 Register Wheat Parcel #1",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"@context\": \"https://raw.githubusercontent.com/smart-data-models/dataModel.Agrifood/master/context.jsonld\",\n    \"id\": \"urn:ngsi-ld:AgriParcel:WheatParcel:1\",\n    \"type\": \"AgriParcel\",\n    \"area\": {\n        \"type\": \"Property\",\n        \"value\": 200\n    },\n    \"belongsTo\": {\n        \"type\": \"Relationship\",\n        \"object\": \"urn:ngsi-ld:AgriFarm:WheatFarm:1\"\n    },\n    \"category\": {\n        \"type\": \"Property\",\n        \"value\": \"arable\"\n    },\n    \"cropStatus\": {\n        \"type\": \"Property\",\n        \"value\": \"seeded\"\n    },\n    \"hasAgriCrop\": {\n        \"type\": \"Relationship\",\n        \"object\": \"urn:ngsi-ld:AgriCrop:crop-1-id\"\n    },\n    \"hasAgriParcelChildren\": {\n        \"type\": \"Relationship\",\n        \"object\": [\n            \"urn:ngsi-ld:AgriParcel:26ba4be0-4474-11e8-8ec1-ab9e0ea93835\",\n            \"urn:ngsi-ld:AgriParcel:2d5b8874-4474-11e8-8d6b-dbe14425b5e4\"\n        ]\n    },\n    \"hasAgriParcelParent\": {\n        \"type\": \"Relationship\",\n        \"object\": \"urn:ngsi-ld:AgriParcel:1ea0f120-4474-11e8-9919-672036642081\"\n    },\n    \"hasAgriSoil\": {\n        \"type\": \"Relationship\",\n        \"object\": \"urn:ngsi-ld:AgriSoil:429d1338-4474-11e8-b90a-d3e34ceb73df\"\n    },\n    \"hasAirQualityObserved\": {\n        \"type\": \"Relationship\",\n        \"object\": [\n            \"urn:ngsi-ld:AirQualityObserved:B3F76EA170D030BCD9E036DCC9BEA22B\"\n        ]\n    },\n    \"hasDevice\": {\n        \"type\": \"Relationship\",\n        \"object\": [\n            \"urn:ngsi-ld:Device:4a40aeba-4474-11e8-86bf-03d82e958ce6\",\n            \"urn:ngsi-ld:Device:63217d24-4474-11e8-9da2-c3dd3c36891b\",\n            \"urn:ngsi-ld:Device:68e091dc-4474-11e8-a398-df010c53b416\",\n            \"urn:ngsi-ld:6f44b54e-4474-11e8-8577-d7ff6a8ef551\"\n        ]\n    },\n    \"lastPlantedAt\": {\n        \"type\": \"Property\",\n        \"value\": {\n            \"@type\": \"DateTime\",\n            \"@value\": \"2016-08-22T10:18:16Z\"\n        }\n    },\n    \"ownedBy\": {\n        \"type\": \"Relationship\",\n        \"object\": \"urn:ngsi-ld:Person:fce9dcbc-4479-11e8-9de1-cb228de7a15c\"\n    },\n    \"relatedSource\": {\n        \"type\": \"Property\",\n        \"value\": {\n            \"application\": \"urn:ngsi-ld:AgriApp:72d9fb43-53f8-4ec8-a33c-fa931360259a\",\n            \"applicationEntityId\": \"app:parcel1\"\n        }\n    },\n    \"seeAlso\": {\n        \"type\": \"Property\",\n        \"value\": [\n            \"https://example.org/concept/agriparcel\",\n            \"https://datamodel.org/example/agriparcel\"\n        ]\n    },\n    \"description\": {\n        \"type\": \"Property\",\n        \"value\": \"Spring wheat\"\n    },\n    \"location\": {\n        \"type\": \"Property\",\n        \"value\": []\n    }\n}"
+				},
+				"url": {
+					"raw": "localhost:1026/ngsi-ld/v1/entities",
+					"host": [
+						"localhost"
+					],
+					"port": "1026",
+					"path": [
+						"ngsi-ld",
+						"v1",
+						"entities"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.7 Register Wheat Farm Tractor Copy",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": \"urn:ngsi-ld:Vehicle:vehicle:RetrofitterTractor:2\",\n  \"type\": \"Vehicle\",\n  \"vehicleType\": {\n    \"type\": \"Property\",\n    \"value\": \"Tractor\"\n  },\n  \"areaServed\": {\n    \"type\": \"Property\",\n    \"value\": \"Centro\"\n  },\n  \"bearing\": {\n    \"type\": \"Property\",\n    \"value\": 43\n  },\n  \"cargoWeight\": {\n    \"type\": \"Property\",\n    \"value\": 314\n  },\n  \"category\": {\n    \"type\": \"Property\",\n    \"value\": [\n      \"municipalServices\"\n    ]\n  },\n  \"currentTripCount\": {\n    \"type\": \"Property\",\n    \"value\": 1\n  },\n  \"deviceBatteryStatus\": {\n    \"type\": \"Property\",\n    \"value\": \"Connected\"\n  },\n  \"deviceSimNumber\": {\n    \"type\": \"Property\",\n    \"value\": \"9942142573\"\n  },\n  \"emergencyVehicleType\": {\n    \"type\": \"Property\",\n    \"value\": \"ambulance\"\n  },\n  \"fuelEfficiency\": {\n    \"type\": \"Property\",\n    \"value\": 13\n  },\n  \"fuelFilled\": {\n    \"type\": \"Property\",\n    \"value\": 6\n  },\n  \"fuelType\": {\n    \"type\": \"Property\",\n    \"value\": \"Petrol\"\n  },\n  \"ignitionStatus\": {\n    \"type\": \"Property\",\n    \"value\": true\n  },\n  \"license_plate\": {\n    \"type\": \"Property\",\n    \"value\": \"KA052134\"\n  },\n  \"location\": {\n    \"type\": \"GeoProperty\",\n    \"value\": {\n      \"type\": \"Point\",\n      \"coordinates\": [\n        -3.164485591715449,\n        40.62785133667262\n      ]\n    },\n    \"observedAt\": \"2018-09-27T12:00:00Z\"\n  },\n  \"municipalityInfo\": {\n    \"type\": \"Property\",\n    \"value\": {\n      \"district\": \"Bangalore Urban\",\n      \"ulbName\": \"BMC\",\n      \"cityId\": \"23\",\n      \"wardId\": \"23\",\n      \"stateName\": \"Karnataka\",\n      \"cityName\": \"Bangalore\",\n      \"zoneName\": \"South\",\n      \"wardName\": \"Bangalore Urban\",\n      \"zoneId\": \"2\",\n      \"wardNum\": 4\n    }\n  },\n  \"name\": {\n    \"type\": \"Property\",\n    \"value\": \"C Recogida 1\"\n  },\n  \"observationDateTime\": {\n    \"type\": \"Property\",\n    \"value\": {\n      \"@type\": \"DateTime\",\n      \"@value\": \"2021-03-11T15:51:02+05:30\"\n    }\n  },\n  \"refVehicleModel\": {\n    \"type\": \"Relationship\",\n    \"object\": \"urn:ngsi-ld:VehicleModel:vehiclemodel:econic\"\n  },\n  \"reportId\": {\n    \"type\": \"Property\",\n    \"value\": \"21645\"\n  },\n  \"serviceOnDuty\": {\n    \"type\": \"Property\",\n    \"value\": false\n  },\n  \"serviceProvided\": {\n    \"type\": \"Property\",\n    \"value\": [\n      \"garbageCollection\",\n      \"wasteContainerCleaning\"\n    ]\n  },\n  \"serviceStatus\": {\n    \"type\": \"Property\",\n    \"value\": \"onRoute\"\n  },\n  \"speed\": {\n    \"type\": \"Property\",\n    \"value\": 50,\n    \"observedAt\": \"2018-09-27T12:00:00Z\"\n  },\n  \"tripNetWeightCollected\": {\n    \"type\": \"Property\",\n    \"value\": 12\n  },\n  \"vehicleAltitude\": {\n    \"type\": \"Property\",\n    \"value\": 600\n  },\n  \"vehiclePlateIdentifier\": {\n    \"type\": \"Property\",\n    \"value\": \"3456ABC\"\n  },\n  \"vehicleRunningStatus\": {\n    \"type\": \"Property\",\n    \"value\": \"running\"\n  },\n  \"vehicleTrackerDevice\": {\n    \"type\": \"Property\",\n    \"value\": \"Installed\"\n  },\n  \"wardId\": {\n    \"type\": \"Property\",\n    \"value\": \"4\"\n  },\n  \"wardName\": {\n    \"type\": \"Property\",\n    \"value\": \"Kempegowda Ward\"\n  },\n  \"zoneName\": {\n    \"type\": \"Property\",\n    \"value\": \"South Zone\"\n  },\n  \"@context\": [\n    \"https://smart-data-models.github.io/dataModel.Transportation/context.jsonld\"\n  ]\n}"
+				},
+				"url": {
+					"raw": "localhost:1026/ngsi-ld/v1/entities",
+					"host": [
+						"localhost"
+					],
+					"port": "1026",
+					"path": [
+						"ngsi-ld",
+						"v1",
+						"entities"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve All Farms",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Link",
+						"value": "<https://raw.githubusercontent.com/smart-data-models/dataModel.Agrifood/master/context.jsonld>",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:1026/ngsi-ld/v1/entities?type=AgriFarm&attrs=name,hasAgriParcel",
+					"host": [
+						"localhost"
+					],
+					"port": "1026",
+					"path": [
+						"ngsi-ld",
+						"v1",
+						"entities"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "AgriFarm"
+						},
+						{
+							"key": "attrs",
+							"value": "name,hasAgriParcel"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve All Parcels",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Link",
+						"value": "<https://raw.githubusercontent.com/smart-data-models/dataModel.Agrifood/master/context.jsonld>",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:1026/ngsi-ld/v1/entities?type=AgriParcel&attrs=belongsTo",
+					"host": [
+						"localhost"
+					],
+					"port": "1026",
+					"path": [
+						"ngsi-ld",
+						"v1",
+						"entities"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "AgriParcel"
+						},
+						{
+							"key": "attrs",
+							"value": "belongsTo"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.1 Apply Pesticide To Soy Field #2",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": \"urn:ngsi-ld:AgriParcelOperation:1\",\n  \"type\": \"AgriParcelOperation\",\n  \"createdAt\": \"2017-01-01T01:20:00Z\",\n  \"description\": {\n    \"type\": \"Property\",\n    \"value\": \"Regular pesticide application\"\n  },\n  \"quantity\": {\n    \"type\": \"Property\",\n    \"value\": 2,\n    \"unitCode\": \"l/ha\"\n  },\n  \"hasAgriParcel\": {\n    \"type\": \"Relationship\",\n    \"object\": \"urn:ngsi-ld:AgriParcel:SoyParcel:2\"\n  },\n  \"endedAt\": {\n    \"type\": \"Property\",\n    \"value\": {\n      \"@type\": \"DateTime\",\n      \"@value\": \"2016-08-22T10:18:16Z\"\n    }\n  },\n  \"hasAgriProductType\": {\n    \"type\": \"Relationship\",\n    \"object\": \"urn:ngsi-ld:AgriProductType:a8f616b8-13fb-473a-8e61-b7a80c6c93ec\"\n  },\n  \"hasOperator\": {\n    \"type\": \"Relationship\",\n    \"object\": \"urn:ngsi-ld:Person:fce9dcbc-4479-11e8-9de1-cb228de7a15c\"\n  },\n  \"irrigationRecord\": {\n    \"type\": \"Property\",\n    \"value\": \"https://example.com/agriparcelrecords/irrigationrecord1\"\n  },\n  \"modifiedAt\": \"2017-05-04T12:30:00Z\",\n  \"operationType\": {\n    \"type\": \"Property\",\n    \"value\": \"Pesticide application\"\n  },\n  \"plannedEndAt\": {\n    \"type\": \"Property\",\n    \"value\": {\n      \"@type\": \"DateTime\",\n      \"@value\": \"2016-08-22T10:18:16Z\"\n    }\n  },\n  \"plannedStartAt\": {\n    \"type\": \"Property\",\n    \"value\": {\n      \"@type\": \"DateTime\",\n      \"@value\": \"2016-08-22T10:18:16Z\"\n    }\n  },\n  \"relatedSource\": {\n    \"type\": \"Property\",\n    \"value\": [\n      {\n        \"application\": \"urn:ngsi-ld:AgriApp:72d9fb43-53f8-4ec8-a33c-fa931360259a\",\n        \"applicationEntityId\": \"app:parcelop1\"\n      }\n    ]\n  },\n  \"reportedAt\": {\n    \"type\": \"Property\",\n    \"value\": {\n      \"@type\": \"DateTime\",\n      \"@value\": \"2016-08-22T10:18:16Z\"\n    }\n  },\n  \"result\": {\n    \"type\": \"Property\",\n    \"value\": \"ok\"\n  },\n  \"seeAlso\": {\n    \"type\": \"Property\",\n    \"value\": [\n      \"https://example.org/concept/agriparcelop\",\n      \"https://datamodel.org/example/agriparcelop\"\n    ]\n  },\n  \"startedAt\": {\n    \"type\": \"Property\",\n    \"value\": {\n      \"@type\": \"DateTime\",\n      \"@value\": \"2016-08-22T10:18:16Z\"\n    }\n  },\n  \"status\": {\n    \"type\": \"Property\",\n    \"value\": \"finished\"\n  },\n  \"waterSource\": {\n    \"type\": \"Property\",\n    \"value\": \"rainwater capture\"\n  },\n  \"workOrder\": {\n    \"type\": \"Property\",\n    \"value\": \"https://example.com/agriparcelrecords/workorder1\"\n  },\n  \"workRecord\": {\n    \"type\": \"Property\",\n    \"value\": \"https://example.com/agriparcelrecords/workrecord1\"\n  },\n  \"@context\": [\n    \"https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld\",\n    \"https://raw.githubusercontent.com/smart-data-models/dataModel.Agrifood/master/context.jsonld\"\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:1026/ngsi-ld/v1/entities",
+					"host": [
+						"localhost"
+					],
+					"port": "1026",
+					"path": [
+						"ngsi-ld",
+						"v1",
+						"entities"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.2 Subscribe to Pesticide Application Events",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"type\":\"Subscription\",\n   \"description\":\"Notify DT when pesticide is applied\",\n   \"entities\":[\n      {\n         \"type\": \"AgriParcelOperation\"\n      }\n   ],\n   \"watchedAttributes\":[\n      \"quantity\"\n   ],\n   \"q\": \"quantity>2;hasAgriParcel==%22urn:ngsi-ld:AgriParcel:WheatParcel:1%22\",\n   \"isActive\":true,\n   \"notification\":{\n      \"format\":\"keyValues\",\n      \"endpoint\":{\n         \"uri\":\"https://4f67-93-86-170-142.ngrok-free.app\",\n         \"accept\":\"application/json\"\n      }\n   },\n   \"@context\": [\n    \"https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld\",\n    \"https://raw.githubusercontent.com/smart-data-models/dataModel.Agrifood/master/context.jsonld\"\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:1026/ngsi-ld/v1/subscriptions",
+					"host": [
+						"localhost"
+					],
+					"port": "1026",
+					"path": [
+						"ngsi-ld",
+						"v1",
+						"subscriptions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.3 Get All Subscriptions",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:1026/ngsi-ld/v1/subscriptions",
+					"host": [
+						"localhost"
+					],
+					"port": "1026",
+					"path": [
+						"ngsi-ld",
+						"v1",
+						"subscriptions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.4 Apply Pesticide To Wheat Field #1",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": \"urn:ngsi-ld:AgriParcelOperation:2\",\n  \"type\": \"AgriParcelOperation\",\n  \"createdAt\": \"2017-01-01T01:20:00Z\",\n  \"description\": {\n    \"type\": \"Property\",\n    \"value\": \"Regular pesticide application\"\n  },\n  \"quantity\": {\n    \"type\": \"Property\",\n    \"value\": 4,\n    \"unitCode\": \"l/ha\"\n  },\n  \"hasAgriParcel\": {\n    \"type\": \"Relationship\",\n    \"object\": \"urn:ngsi-ld:AgriParcel:WheatParcel:1\"\n  },\n  \"endedAt\": {\n    \"type\": \"Property\",\n    \"value\": {\n      \"@type\": \"DateTime\",\n      \"@value\": \"2016-08-22T10:18:16Z\"\n    }\n  },\n  \"hasAgriProductType\": {\n    \"type\": \"Relationship\",\n    \"object\": \"urn:ngsi-ld:AgriProductType:a8f616b8-13fb-473a-8e61-b7a80c6c93ec\"\n  },\n  \"hasOperator\": {\n    \"type\": \"Relationship\",\n    \"object\": \"urn:ngsi-ld:Person:fce9dcbc-4479-11e8-9de1-cb228de7a15c\"\n  },\n  \"irrigationRecord\": {\n    \"type\": \"Property\",\n    \"value\": \"https://example.com/agriparcelrecords/irrigationrecord1\"\n  },\n  \"modifiedAt\": \"2017-05-04T12:30:00Z\",\n  \"operationType\": {\n    \"type\": \"Property\",\n    \"value\": \"Pesticide application\"\n  },\n  \"plannedEndAt\": {\n    \"type\": \"Property\",\n    \"value\": {\n      \"@type\": \"DateTime\",\n      \"@value\": \"2016-08-22T10:18:16Z\"\n    }\n  },\n  \"plannedStartAt\": {\n    \"type\": \"Property\",\n    \"value\": {\n      \"@type\": \"DateTime\",\n      \"@value\": \"2016-08-22T10:18:16Z\"\n    }\n  },\n  \"relatedSource\": {\n    \"type\": \"Property\",\n    \"value\": [\n      {\n        \"application\": \"urn:ngsi-ld:AgriApp:72d9fb43-53f8-4ec8-a33c-fa931360259a\",\n        \"applicationEntityId\": \"app:parcelop1\"\n      }\n    ]\n  },\n  \"reportedAt\": {\n    \"type\": \"Property\",\n    \"value\": {\n      \"@type\": \"DateTime\",\n      \"@value\": \"2016-08-22T10:18:16Z\"\n    }\n  },\n  \"result\": {\n    \"type\": \"Property\",\n    \"value\": \"ok\"\n  },\n  \"seeAlso\": {\n    \"type\": \"Property\",\n    \"value\": [\n      \"https://example.org/concept/agriparcelop\",\n      \"https://datamodel.org/example/agriparcelop\"\n    ]\n  },\n  \"startedAt\": {\n    \"type\": \"Property\",\n    \"value\": {\n      \"@type\": \"DateTime\",\n      \"@value\": \"2016-08-22T10:18:16Z\"\n    }\n  },\n  \"status\": {\n    \"type\": \"Property\",\n    \"value\": \"finished\"\n  },\n  \"waterSource\": {\n    \"type\": \"Property\",\n    \"value\": \"rainwater capture\"\n  },\n  \"workOrder\": {\n    \"type\": \"Property\",\n    \"value\": \"https://example.com/agriparcelrecords/workorder1\"\n  },\n  \"workRecord\": {\n    \"type\": \"Property\",\n    \"value\": \"https://example.com/agriparcelrecords/workrecord1\"\n  },\n  \"@context\": [\n    \"https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld\",\n    \"https://raw.githubusercontent.com/smart-data-models/dataModel.Agrifood/master/context.jsonld\"\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:1026/ngsi-ld/v1/entities",
+					"host": [
+						"localhost"
+					],
+					"port": "1026",
+					"path": [
+						"ngsi-ld",
+						"v1",
+						"entities"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve All Parcel Operations",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Link",
+						"value": "<https://raw.githubusercontent.com/smart-data-models/dataModel.Agrifood/master/context.jsonld>",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:1026/ngsi-ld/v1/entities?type=AgriParcelOperation&attrs=description,hasAgriParcel,quantity",
+					"host": [
+						"localhost"
+					],
+					"port": "1026",
+					"path": [
+						"ngsi-ld",
+						"v1",
+						"entities"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "AgriParcelOperation"
+						},
+						{
+							"key": "attrs",
+							"value": "description,hasAgriParcel,quantity"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
