@@ -32,7 +32,6 @@ services:
   crate-db:
     image: crate:latest
     hostname: crate-db
-    platform: linux/x86_64
     container_name: db-crate
     ports:
         - "4200:4200"
@@ -44,7 +43,6 @@ services:
       -Chttp.cors.enabled=true 
       -Chttp.cors.allow-origin="*"
       -Cgateway.expected_nodes=1
-      # -Cnumber_of_replicas=0
     environment:
         - CRATE_HEAP_SIZE=2g
 
