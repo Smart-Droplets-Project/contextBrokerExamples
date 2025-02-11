@@ -1,0 +1,40 @@
+{
+    "id": "urn:ngsi-ld:DeviceMeasurement:4d12c258-d621-433c-ac6f-3c30320aa1a7-id",
+    "type": "DeviceMeasurement",
+    "@context": [
+        "https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld",
+        "https://raw.githubusercontent.com/smart-data-models/dataModel.Device/master/context.jsonld"
+    ],
+    "controlledProperty": {
+        "type": "Property",
+        "value": "obs-detections"
+    },
+    "dateObserved": {
+        "type": "Property",
+        "value": "2025-02-10T09:58:24.877353Z"
+    },
+    "location": {
+        "type": "Property",
+        "value": {
+            "type": "MultiPoint",
+            "coordinates": [
+                [
+                    3.095632,
+                    42.161522
+                ],
+                [
+                    3.09351,
+                    42.162214
+                ]
+            ]
+        }
+    },
+    "numValue": {
+        "type": "Property",
+        "value": 1.0
+    },
+    "refDevice": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:Device:96651462-7e8e-4ac8-ac4a-c445a8747c9e-id"
+    }
+}

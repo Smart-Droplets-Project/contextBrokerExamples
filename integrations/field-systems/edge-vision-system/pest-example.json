@@ -1,0 +1,12 @@
+{
+    "id": "urn:ngsi-ld:https://smartdatamodels.org/dataModel.Agrifood/AgriPest:AgriPest:f04a0476-5d1f-4013-9c7b-31185c1ba3ba-id",
+    "type": "https://smartdatamodels.org/dataModel.Agrifood/AgriPest",
+    "@context": [
+        "https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld",
+        "https://raw.githubusercontent.com/smart-data-models/dataModel.Agrifood/master/context.jsonld"
+    ],
+    "description": {
+        "type": "Property",
+        "value": "alternaria"
+    }
+}

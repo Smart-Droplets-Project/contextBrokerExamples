@@ -1,0 +1,16 @@
+{
+    "id": "urn:ngsi-ld:Device:96651462-7e8e-4ac8-ac4a-c445a8747c9e-id",
+    "type": "Device",
+    "@context": [
+        "https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld",
+        "https://raw.githubusercontent.com/smart-data-models/dataModel.Device/master/context.jsonld"
+    ],
+    "controlledProperty": {
+        "type": "Property",
+        "value": "obs-detections"
+    },
+    "controlledAsset": {
+        "type": "Property",
+        "value": "urn:ngsi-ld:AgriPest:f04a0476-5d1f-4013-9c7b-31185c1ba3ba-id"
+    }
+}
